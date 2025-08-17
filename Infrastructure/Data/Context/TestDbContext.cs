@@ -5,7 +5,7 @@ using ProvaPub.Domain.Entities;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 
-namespace ProvaPub.Infrastructure.Repository
+namespace ProvaPub.Infrastructure.Data.Context
 {
 
 	public class TestDbContext : DbContext

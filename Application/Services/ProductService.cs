@@ -1,11 +1,12 @@
 ﻿using ProvaPub.Application.DTOs;
-using ProvaPub.Infrastructure.Repository;
+using ProvaPub.Application.Interfaces;
+using ProvaPub.Infrastructure.Data.Context;
 
 namespace ProvaPub.Application.Services
 {
-	public class ProductService
-	{
-		TestDbContext _ctx;
+	public class ProductService : IProductService
+    {
+		private readonly TestDbContext _ctx;
 
 		public ProductService(TestDbContext ctx)
 		{

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProvaPub.Application.Services;
 using ProvaPub.Domain.Entities;
-using ProvaPub.Infrastructure.Repository;
+using ProvaPub.Infrastructure.Data.Context;
 
 namespace ProvaPub.Presentation.Controllers
 {
