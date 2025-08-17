@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProvaPub.Models;
-using ProvaPub.Repository;
-using ProvaPub.Services;
+using ProvaPub.Application.DTOs;
+using ProvaPub.Application.Services;
+using ProvaPub.Infrastructure.Repository;
 
-namespace ProvaPub.Controllers
+namespace ProvaPub.Presentation.Controllers
 {
 	
 	[ApiController]

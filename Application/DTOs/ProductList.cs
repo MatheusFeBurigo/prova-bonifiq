@@ -1,4 +1,6 @@
-﻿namespace ProvaPub.Models
+﻿using ProvaPub.Domain.Entities;
+
+namespace ProvaPub.Application.DTOs
 {
 	public class ProductList
 	{

@@ -1,7 +1,7 @@
-﻿using ProvaPub.Models;
-using ProvaPub.Repository;
+﻿using ProvaPub.Application.DTOs;
+using ProvaPub.Infrastructure.Repository;
 
-namespace ProvaPub.Services
+namespace ProvaPub.Application.Services
 {
 	public class ProductService
 	{

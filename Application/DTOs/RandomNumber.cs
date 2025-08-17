@@ -1,4 +1,4 @@
-﻿namespace ProvaPub.Models
+﻿namespace ProvaPub.Application.DTOs
 {
     public class RandomNumber
     {
