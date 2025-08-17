@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvaPub.Application.Services;
-using ProvaPub.Infrastructure.Repository;
+using ProvaPub.Infrastructure.Data.Context;
 
 namespace ProvaPub.Presentation.Controllers
 {
