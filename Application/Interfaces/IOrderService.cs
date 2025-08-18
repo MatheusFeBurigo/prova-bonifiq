@@ -5,6 +5,6 @@ namespace ProvaPub.Application.Interfaces
     public interface IOrderService
     {
         Task<Order> PayOrder(string paymentMethod, decimal paymentValue, int customerId);
-        Task<Order> InsertOrder(Domain.Entities.Order order);
+        Task<Order> InsertOrder(Order order);
     }
 }

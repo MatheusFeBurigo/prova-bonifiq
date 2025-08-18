@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ProvaPub.Infrastructure.Data.Context;
 using ProvaPub.Application.Interfaces;
 using ProvaPub.Application.Services;
+using ProvaPub.Infrastructure.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IRandomService, RandomService>();
+builder.Services.AddScoped<PaymentServiceFactory>();
+builder.Services.AddScoped<PixPaymentService>();
+builder.Services.AddScoped<CreditCardPaymentService>();
+builder.Services.AddScoped<PaypalPaymentService>();
 
 var app = builder.Build();
 

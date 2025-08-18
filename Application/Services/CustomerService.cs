@@ -2,7 +2,7 @@
 using ProvaPub.Application.DTOs;
 using ProvaPub.Application.Interfaces;
 using ProvaPub.Domain.Entities;
-using ProvaPub.Infrastructure.Repository;
+using ProvaPub.Infrastructure.Data.Context;
 
 namespace ProvaPub.Application.Services
 {

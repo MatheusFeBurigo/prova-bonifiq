@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ProvaPub.Application.Services;
 using ProvaPub.Domain.Entities;
 using ProvaPub.Infrastructure.Data.Context;
+using ProvaPub.Infrastructure.Factories;
 
 namespace ProvaPub.Presentation.Controllers
 {
@@ -17,19 +18,30 @@ namespace ProvaPub.Presentation.Controllers
     /// Demonstre como você faria isso.
     /// </summary>
     [ApiController]
-	[Route("[controller]")]
-	public class Parte3Controller :  ControllerBase
-	{
-		[HttpGet("orders")]
-		public async Task<Order> PlaceOrder(string paymentMethod, decimal paymentValue, int customerId)
-		{
+    [Route("[controller]")]
+    public class Parte3Controller : ControllerBase
+    {
+        private readonly PaymentServiceFactory _paymentServiceFactory;
+        private readonly ILogger<OrderService> _logger;
+
+        public Parte3Controller(PaymentServiceFactory paymentServiceFactory, ILogger<OrderService> logger)
+        {
+            _paymentServiceFactory = paymentServiceFactory;
+            _logger = logger;
+        }
+
+        [HttpGet("orders")]
+        public async Task<Order> PlaceOrder(string paymentMethod, decimal paymentValue, int customerId)
+        {
             var contextOptions = new DbContextOptionsBuilder<TestDbContext>()
-    .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Teste;Trusted_Connection=True;")
-    .Options;
+                .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Teste;Trusted_Connection=True;")
+                .Options;
 
             using var context = new TestDbContext(contextOptions);
 
-            return await new OrderService(context).PayOrder(paymentMethod, paymentValue, customerId);
-		}
-	}
+            var orderService = new OrderService(context, _paymentServiceFactory, _logger);
+
+            return await orderService.PayOrder(paymentMethod, paymentValue, customerId);
+        }
+    }
 }

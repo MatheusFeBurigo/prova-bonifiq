@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Presentation\Middlewares\**" />
+    <Content Remove="Presentation\Middlewares\**" />
+    <EmbeddedResource Remove="Presentation\Middlewares\**" />
+    <None Remove="Presentation\Middlewares\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
@@ -19,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\Migrations\" />
-    <Folder Include="Presentation\Middlewares\" />
   </ItemGroup>
 
 </Project>
