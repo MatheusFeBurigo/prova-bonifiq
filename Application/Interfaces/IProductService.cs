@@ -1,9 +1,10 @@
 ﻿using ProvaPub.Application.DTOs;
+using ProvaPub.Domain.Entities;
 
 namespace ProvaPub.Application.Interfaces
 {
     public interface IProductService
     {
-        ProductList ListProducts(int page);
+        PaginatedList<Product> ListProducts(int page);
     }
 }

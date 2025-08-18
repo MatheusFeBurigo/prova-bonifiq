@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvaPub.Application.DTOs;
-using ProvaPub.Application.Services;
-using ProvaPub.Infrastructure.Data.Context;
+using ProvaPub.Application.Interfaces;
+using ProvaPub.Domain.Entities;
 
 namespace ProvaPub.Presentation.Controllers
 {
-	
-	[ApiController]
-	[Route("[controller]")]
-	public class Parte2Controller :  ControllerBase
-	{
-		/// <summary>
+
+    [ApiController]
+    [Route("[controller]")]
+    public class Parte2Controller : ControllerBase
+    {
+        /// <summary>
 		/// Precisamos fazer algumas alterações:
 		/// 1 - Não importa qual page é informada, sempre são retornados os mesmos resultados. Faça a correção.
 		/// 2 - Altere os códigos abaixo para evitar o uso de "new", como em "new ProductService()". Utilize a Injeção de Dependência para resolver esse problema
@@ -18,24 +18,25 @@ namespace ProvaPub.Presentation.Controllers
 		/// Como você faria pra criar uma estrutura melhor, com menos repetição de código? E quanto ao CustomerService/ProductService. Você acha que seria possível evitar a repetição de código?
 		/// 
 		/// </summary>
-		TestDbContext _ctx;
-		public Parte2Controller(TestDbContext ctx)
-		{
-			_ctx = ctx;
-		}
-	
-		[HttpGet("products")]
-		public ProductList ListProducts(int page)
-		{
-			var productService = new ProductService(_ctx);
-			return productService.ListProducts(page);
-		}
+        private readonly IProductService _productService;
+        private readonly ICustomerService _customerService;
 
-		[HttpGet("customers")]
-		public CustomerList ListCustomers(int page)
-		{
-			var customerService = new CustomerService(_ctx);
-			return customerService.ListCustomers(page);
-		}
-	}
+        public Parte2Controller(IProductService productService, ICustomerService customerService)
+        {
+            _productService = productService;
+            _customerService = customerService;
+        }
+
+        [HttpGet("products")]
+        public PaginatedList<Product> ListProducts(int page)
+        {
+            return _productService.ListProducts(page);
+        }
+
+        [HttpGet("customers")]
+        public PaginatedList<Customer> ListCustomers(int page)
+        {
+            return _customerService.ListCustomers(page);
+        }
+    }
 }
