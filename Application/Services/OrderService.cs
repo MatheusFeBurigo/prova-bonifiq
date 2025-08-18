@@ -1,11 +1,12 @@
-﻿using ProvaPub.Domain.Entities;
-using ProvaPub.Infrastructure.Repository;
+﻿using ProvaPub.Application.Interfaces;
+using ProvaPub.Domain.Entities;
+using ProvaPub.Infrastructure.Data.Context;
 
 namespace ProvaPub.Application.Services
 {
-	public class OrderService
-	{
-        TestDbContext _ctx;
+	public class OrderService : IOrderService
+    {
+        private readonly TestDbContext _ctx;
 
         public OrderService(TestDbContext ctx)
         {

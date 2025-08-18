@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProvaPub.Application.Interfaces;
 using ProvaPub.Application.Services;
 
 namespace ProvaPub.Presentation.Controllers
@@ -12,9 +13,9 @@ namespace ProvaPub.Presentation.Controllers
 	[Route("[controller]")]
 	public class Parte1Controller :  ControllerBase
 	{
-		private readonly RandomService _randomService;
+		private readonly IRandomService _randomService;
 
-		public Parte1Controller(RandomService randomService)
+		public Parte1Controller(IRandomService randomService)
 		{
 			_randomService = randomService;
 		}
